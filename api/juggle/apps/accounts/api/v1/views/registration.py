@@ -16,5 +16,4 @@ class RegistrationAPIView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-        response = LoginService.login(request, user)
-        return response
+        return LoginService.login(request, user)

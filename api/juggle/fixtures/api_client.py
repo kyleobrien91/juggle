@@ -23,26 +23,50 @@ class _CustomAPIClient(APIClient):
     def post(self, path, data=None, format=None, content_type="application/json", follow=False, **extra):
         if isinstance(data, (dict, list)):
             data = json.dumps(data)
-        response = super().post(path, data=data, format=format, content_type=content_type, follow=follow, **extra)
-        return response
+        return super().post(
+            path,
+            data=data,
+            format=format,
+            content_type=content_type,
+            follow=follow,
+            **extra
+        )
 
     def put(self, path, data=None, format=None, content_type="application/json", follow=False, **extra):
         if isinstance(data, (dict, list)):
             data = json.dumps(data)
-        response = super().put(path, data=data, format=format, content_type=content_type, follow=follow, **extra)
-        return response
+        return super().put(
+            path,
+            data=data,
+            format=format,
+            content_type=content_type,
+            follow=follow,
+            **extra
+        )
 
     def patch(self, path, data=None, format=None, content_type="application/json", follow=False, **extra):
         if isinstance(data, (dict, list)):
             data = json.dumps(data)
-        response = super().patch(path, data=data, format=format, content_type=content_type, follow=follow, **extra)
-        return response
+        return super().patch(
+            path,
+            data=data,
+            format=format,
+            content_type=content_type,
+            follow=follow,
+            **extra
+        )
 
     def delete(self, path, data=None, format=None, content_type="application/json", follow=False, **extra):
         if isinstance(data, (dict, list)):
             data = json.dumps(data)
-        response = super().delete(path, data=data, format=format, content_type=content_type, follow=follow, **extra)
-        return response
+        return super().delete(
+            path,
+            data=data,
+            format=format,
+            content_type=content_type,
+            follow=follow,
+            **extra
+        )
 
 
 @pytest.fixture()

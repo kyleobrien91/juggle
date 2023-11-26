@@ -64,16 +64,16 @@ class UserAccount(PermissionsMixin, CoreModel, AbstractBaseUser):
         return str(self.email)
 
     def get_full_name(self) -> str:
-        if self.first_name and self.last_name:
-            full_name = f"{self.first_name} {self.last_name} <{self.email}>"
-        else:
-            full_name = self.get_short_name()
-        return full_name
+        return (
+            f"{self.first_name} {self.last_name} <{self.email}>"
+            if self.first_name and self.last_name
+            else self.get_short_name()
+        )
 
     @property
     def notification_salutation(self):
-        if self.first_name and self.last_name:
-            salutation = f"{self.first_name} {self.last_name}"
-        else:
-            salutation = gettext_lazy("Dear client")
-        return salutation
+        return (
+            f"{self.first_name} {self.last_name}"
+            if self.first_name and self.last_name
+            else gettext_lazy("Dear client")
+        )

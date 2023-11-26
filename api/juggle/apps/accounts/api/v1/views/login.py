@@ -20,8 +20,7 @@ class LoginView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data.get("user")
-        response = LoginService.login(request, user)
-        return response
+        return LoginService.login(request, user)
 
 
 class LogoutView(GenericAPIView):
@@ -30,5 +29,4 @@ class LogoutView(GenericAPIView):
 
     @swagger_auto_schema(responses={status.HTTP_204_NO_CONTENT: openapi.Response("")})
     def post(self, request):
-        response = LoginService.logout(request)
-        return response
+        return LoginService.logout(request)
