@@ -15,8 +15,7 @@ class LoginSerializer(serializers.Serializer):
         return django_authenticate(email=email, password=password)  # pragma: no cover
 
     def validate(self, attrs):
-        user = self._authenticate(attrs.get("email"), attrs.get("password"))
-        if user:
+        if user := self._authenticate(attrs.get("email"), attrs.get("password")):
             return {"user": user}
         raise ValidationError(gettext("Incorrect email or password."))
 

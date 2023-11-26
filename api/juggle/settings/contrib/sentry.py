@@ -5,8 +5,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from ..environment import env
 
 
-USE_SENTRY = env.bool("JUGGLE_USE_SENTRY", default=True)
-if USE_SENTRY:  # pragma: no cover
+if USE_SENTRY := env.bool("JUGGLE_USE_SENTRY", default=True):
     sentry_kwargs = {
         "dsn": env.str("JUGGLE_SENTRY_DSN"),
         "environment": env.str("JUGGLE_SENTRY_ENVIRONMENT"),
